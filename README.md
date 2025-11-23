@@ -98,6 +98,11 @@ Keep index.html, style.css, and script.js in the same folder
 
 Open index.html in your browser
 
+OR 
+use this link
+https://nodusynthax.netlify.app/
+
+
 Enjoy the simulation!
 
 🚀 Future Improvements
