@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lifeline Navigator - Emergency Route Optimizer</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="header">
+        <div class="logo">🚑 Lifeline Navigator</div>
+        <div class="subtitle">AI-Powered Emergency Route Optimization</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Mission Configuration</div>
+
+        <div class="form-group">
+          <label for="citySelect">City</label>
+          <select id="citySelect">
+            <option value="0">Bengaluru</option>
+            <option value="1">Mumbai</option>
+            <option value="2">Delhi</option>
+            <option value="3">Chennai</option>
+            <option value="4">Kolkata</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="hospitalSelect">Destination Hospital</label>
+          <select id="hospitalSelect"></select>
+        </div>
+
+        <div class="form-group">
+          <label>Ambulance Start Location</label>
+          <div style="font-size:12px;color:var(--color-text-secondary);margin-top:4px">
+            Click on map to set location
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="startBtn" disabled>
+          🚀 Start Emergency Navigation
+        </button>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+          <button class="btn btn-secondary" id="pauseBtn" disabled>⏸️ Pause</button>
+          <button class="btn btn-danger" id="stopBtn" disabled>⏹️ Stop</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">System Status</div>
+
+        <div class="status-grid">
+          <div class="status-card">
+            <div class="status-icon">🧠</div>
+            <div class="status-label">Routing Brain</div>
+            <div class="status-value" id="routeDistance">-</div>
+            <div class="status-detail" id="routeETA">ETA: -</div>
+          </div>
+
+          <div class="status-card">
+            <div class="status-icon">🚦</div>
+            <div class="status-label">Traffic Light AI</div>
+            <div class="status-value" id="signalCount">0</div>
+            <div class="status-detail">
+              Mode:
+              <span class="mode-indicator mode-standby" id="signalMode">Standby</span>
+            </div>
+          </div>
+
+          <div class="status-card">
+            <div class="status-icon">🌐</div>
+            <div class="status-label">Optimization</div>
+            <div class="status-value" id="rerouteCount">0</div>
+            <div class="status-detail" id="optimizationStatus">Ready</div>
+          </div>
+
+          <div class="status-card">
+            <div class="status-icon">⚡</div>
+            <div class="status-label">Performance</div>
+            <div class="status-value" id="efficiency">-</div>
+            <div class="status-detail">vs. Standard Route</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <div id="map"></div>
+
+      <div class="hud">
+        <div class="hud-item">
+          <div class="hud-label">Speed</div>
+          <div class="hud-value" id="speedDisplay">0 km/h</div>
+        </div>
+        <div class="hud-item">
+          <div class="hud-label">Battery</div>
+          <div class="hud-value">100%</div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:100%"></div>
+          </div>
+        </div>
+        <div class="hud-item">
+          <div class="hud-label">Navigation Status</div>
+          <div class="hud-value" style="font-size:14px" id="navStatus">Ready</div>
+        </div>
+      </div>
+
+      <div class="instruction-box" id="instructionBox">
+        <div class="instruction-text" id="instructionText">
+          Configure your emergency response mission
+        </div>
+      </div>
+
+      <div class="alert-banner" id="alertBanner">
+        🚨 TRAFFIC CLEARING MODE ACTIVE
+      </div>
+    </div>
+  </div>
+
+  <!-- External JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- App logic -->
+  <script src="script.js"></script>
+</body>
+</html>
